@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragment_home">
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.yuki.jikkenshitsu.fragment_home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/fragment_explore"
+        android:name="com.yuki.jikkenshitsu.fragment_explore"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/fragment_card"
+        android:name="com.yuki.jikkenshitsu.fragment_card"
+        android:label="fragment_card"
+        tools:layout="@layout/fragment_card" />
+    <fragment
+        android:id="@+id/fragment_favorites"
+        android:name="com.yuki.jikkenshitsu.fragment_favorites"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/fragment_diary"
+        android:name="com.yuki.jikkenshitsu.fragment_diary"
+        android:label="fragment_diary"
+        tools:layout="@layout/fragment_diary" />
+</navigation>

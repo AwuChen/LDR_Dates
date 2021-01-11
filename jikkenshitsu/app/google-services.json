@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "601303128956",
+    "project_id": "jikkenshitsu",
+    "storage_bucket": "jikkenshitsu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601303128956:android:e469dd19124608a308a2f9",
+        "android_client_info": {
+          "package_name": "com.yuki.jikkenshitsu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601303128956-jjpu2tb71hejmsbojs3uhnl0mk2rdh3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqJxva0kp7ys6UXKikTN8ye6-ymLLASoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601303128956-jjpu2tb71hejmsbojs3uhnl0mk2rdh3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
