@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jikkenshitsu">
+        <activity android:name=".ScheduleDate"></activity>
         <activity android:name=".activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
