@@ -22,14 +22,6 @@
             app:srcCompat="@drawable/_temp"
             android:contentDescription="@+string/hike" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="275dp"
-            tools:layout_editor_absoluteY="85dp" />
-
         <TextView
             android:id="@+id/dateName"
             android:layout_width="wrap_content"
@@ -80,14 +72,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:focusable="true" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="275dp"
-            tools:layout_editor_absoluteY="26dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

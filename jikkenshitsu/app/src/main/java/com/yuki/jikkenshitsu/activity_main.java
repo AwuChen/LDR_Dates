@@ -6,16 +6,23 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.*;
+
+import java.util.UUID;
 
 public class activity_main extends AppCompatActivity {
     private static final String TAG = "MainActivity.java";
@@ -27,6 +34,11 @@ public class activity_main extends AppCompatActivity {
     private TextView dateName;
     private TextView dateDescription;
 
+    private EditText mAddTitleEt, mAddDescriptionEt;
+    private Button mSaveDataBtn;
+
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +48,58 @@ public class activity_main extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.fragment);
 
         NavigationUI.setupWithNavController(nav_main, navController);
+
+//        mAddTitleEt = (EditText) findViewById(R.id.addTitle);
+//        mAddDescriptionEt = (EditText) findViewById(R.id.addDescription);
+//        mSaveDataBtn = (Button) findViewById(R.id.saveData);
+//
+//        pd = new ProgressDialog(this);
+//
+//        mSaveDataBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String title = mAddTitleEt.getText().toString().trim();
+//                String description = mAddDescriptionEt.getText().toString().trim();
+//                uploadData(title, description);
+//            }
+//        });
+    }
+
+    private void uploadData(String title, String description) {
+        pd.setTitle("Adding Data");
+        pd.show();
+        String id = UUID.randomUUID().toString();
+
+        db.collection("temp").document("id").set(title)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        pd.dismiss();
+                        Toast.makeText(activity_main.this, "Saved!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        pd.dismiss();
+                        Toast.makeText(activity_main.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+        db.collection("temp").document("id").set(description)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        pd.dismiss();
+                        Toast.makeText(activity_main.this, "Saved!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        pd.dismiss();
+                        Toast.makeText(activity_main.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public void loadDate(View v) {
@@ -44,7 +108,7 @@ public class activity_main extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String name = documentSnapshot.getString("name");
+                            String name = documentSnapshot.getString("title");
                             String description = documentSnapshot.getString("description");
 
                             dateName = findViewById(R.id.dateName);
@@ -65,8 +129,5 @@ public class activity_main extends AppCompatActivity {
                         Log.w(TAG, e.toString());
                     }
                 });
-    }
-
-    public void randomize(View v) {
     }
 }
